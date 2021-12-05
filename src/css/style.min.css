@@ -1,1 +1,1 @@
-*{font-family:Museo Sans}
+*{font-family:Museo Sans}.container{max-width:950px;margin:0 auto}.promo{min-height:650px;padding:21px 0 93px 0;background:url(../img/bg_wumen.jpg) center center/cover no-repeat}.header{display:flex;justify-content:space-between;align-items:center}.header__logo{max-width:251px}.header__logo img{width:100%}

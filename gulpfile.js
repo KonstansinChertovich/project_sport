@@ -15,7 +15,7 @@ gulp.task('server', function() {
 });
 
 gulp.task('style', function() {
-    return gulp.src("src/sass/*.+(sass|scss)")
+    return gulp.src("src/sass/**/*.+(sass|scss)")
             .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
             .pipe(rename({
                 prefix: "",
@@ -30,7 +30,7 @@ gulp.task('style', function() {
 });
 
 gulp.task('watch', function() {
-    gulp.watch("src/sass/*.+(sass|scss)", gulp.parallel('style'));
+    gulp.watch("src/sass/**/*.+(sass|scss)", gulp.parallel('style'));
     gulp.watch("src/*.html").on('change', browserSync.reload);
 });
 
