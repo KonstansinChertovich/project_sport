@@ -8,4 +8,32 @@
             width: 100%;
         }
     }
+    &__official {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 12px;
+        text-align: center;
+        color: #ffff;
+        span {
+            display: block;
+            margin-top: 12px;
+            font-weight: 500;
+            font-size: 18px;
+        }
+    }
+    &__phone {
+        display: block;
+        font-weight: 700;
+        font-size: 18px;
+        text-decoration: none;
+        color: #ffff;
+        &:hover {
+            color: #ffff;
+        }
+    }
+    &__contact {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
 }
