@@ -1,0 +1,15 @@
+.advantage {
+    min-height: 470px;
+    padding: 73px 0 65px 0;
+    &__wrapper {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 65px;
+    }
+    &__cart {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 260px;
+    }
+}

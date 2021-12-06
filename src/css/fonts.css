@@ -25,3 +25,12 @@
 	font-weight: 700;
 	font-style: normal;
 }
+@font-face {
+	font-family: 'Museo Sans Italic';
+	src: local('MuseoSansCyrl-700Italic'),
+		url('../font/MuseoSansCyrl-700Italic.eot') format('embedded-opentype'),
+		url('../font/MuseoSansCyrl-700Italic.woff') format('woff'),
+		url('../font/MuseoSansCyrl-700Italic.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
