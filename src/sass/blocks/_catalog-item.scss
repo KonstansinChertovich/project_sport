@@ -1,8 +1,11 @@
 .catalog-item {
+    position: relative;
     width: 303px;
     min-height: 442px;
     border: 2px solid #E8E8E8;
+    margin: 6px;
     padding: 20px 20px 21px 20px;
+    overflow: hidden;
     &__img {
         display: block;
         margin: 0 auto;
@@ -33,6 +36,12 @@
         &:hover {
             color: $main-color;
         }
+        &_mod {
+            position: absolute;
+            bottom: 0;
+            left: 45%;
+            transform: translateX(-50%);
+        }
     }
     hr {
         margin: 17px 20px;
@@ -52,5 +61,53 @@
         font-weight: 700;
         font-size: 20px;
         color: #050505;
+    }
+    &__wrapper {
+        display: flex;
+        width: calc(200% + 40px);
+        
+    }
+    &__cart-default {
+        width: 50%;
+        margin-right: 0;
+        transform: translateX(-100%);
+        transition: 0.3s all;
+        &_active {
+            transform: translateX(0%);
+            margin-right: 20px;
+        }
+    }
+    &__cart {
+        width: 50%;
+        margin-left: 20px;
+        transform: translateX(0%);
+        transition: 0.3s all;
+        &_active {
+            transform: translateX(-100%);
+            margin-left: 0px;
+        }
+    }
+    &__list {
+        position: relative;
+        list-style-type: none;
+        padding-left: 0;
+        margin-bottom: 0;
+    }
+    &__punkt {
+        position: relative;
+        font-weight: 300;
+        font-size: 14px;
+        color: #555555;
+        margin-bottom: 7px;
+        padding-left: 9px;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: -10px;
+            width: 8px;
+            height: 8px;
+            background: $main-color;
+        }
     }
 }
