@@ -1,0 +1,25 @@
+.comments {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+    &__content {
+        margin-left: 60px;
+    }
+    &__name {
+        font-weight: 700;
+        font-size: 18px;
+        color: #0D0D0D;
+    }
+    &__marathon {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 14px;
+        color: #646464;
+    }
+    &__text {
+        margin-top: 10px;
+        font-weight: 300;
+        font-size: 16px;
+        color: #0D0D0D;
+    }
+}
