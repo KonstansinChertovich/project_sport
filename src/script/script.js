@@ -1,10 +1,12 @@
 $(document).ready(function(){
+// Slider
     $('.carousel__inner').slick({
         speed: 1100,
         prevArrow: '<button type="button" class="slick-prev"><img src="../icon/left.png" alt="arrow"></button>',
         nextArrow: '<button type="button" class="slick-next"><img src="../icon/right.png" alt="arrow"></button>'
     });
 
+// Tabs
     $('ul.catalog__tabs').on('click', 'li:not(.catalog__tab_active)', function() {
         $(this)
           .addClass('catalog__tab_active').siblings().removeClass('catalog__tab_active')
@@ -24,6 +26,7 @@ $(document).ready(function(){
     myToggle('.catalog-item__link');
     myToggle('.catalog-item__back');
 
+// Modal
     const btns = document.querySelectorAll(".promo button"),
           owerlay = document.querySelector('.owerlay'), 
           modalClose = owerlay.querySelectorAll('.modal__close'),  
@@ -42,8 +45,7 @@ $(document).ready(function(){
                 modal.classList.add('modal_active');
 
                 if(item.classList.contains('button_mini')) {
-                    subTitle = modal.querySelector('.modal__descr');
-                    subTitle.innerText = catalogCart[i].innerText;
+                    modal.querySelector('.modal__descr').innerText = catalogCart[i].innerText;
                 }
             });
         });
@@ -58,9 +60,35 @@ $(document).ready(function(){
             });
         });
     }
-
     myModal(btns, modalConsultation);
     myModal(btns, modalConsultation);
     myModal(btnsMini, modalOrder);
-    
+
+// validate form
+    function validateForm(form) {
+        $(form).validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 2
+                },
+                phone: "required",
+                email: "required"
+            },
+            messages: {
+                name: {
+                    required: "Введите ваше имя!",
+                    minlength: jQuery.validator.format("Минимальное кол-во символов {0}!")
+                  },
+                phone: "Введите номер телефона!",
+                email: {
+                  required: "Введите ваш email!",
+                  email: "Проверьте формат эл. почты"
+                }
+              }
+        });
+    }
+    validateForm('#consultation-form');
+    validateForm('#consultation form');
+    validateForm('#order form');
   });

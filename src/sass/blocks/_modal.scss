@@ -57,4 +57,13 @@
     &_active {
         display: block;
     }
+    .error {
+        border: 1px solid $main-color;
+    }
+    label.error {
+        border: none;
+        text-align: center;
+        margin-bottom: 15px;
+        color: $main-color;
+    }
 }
