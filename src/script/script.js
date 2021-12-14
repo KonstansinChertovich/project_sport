@@ -23,4 +23,44 @@ $(document).ready(function(){
 
     myToggle('.catalog-item__link');
     myToggle('.catalog-item__back');
+
+    const btns = document.querySelectorAll(".promo button"),
+          owerlay = document.querySelector('.owerlay'), 
+          modalClose = owerlay.querySelectorAll('.modal__close'),  
+          modalConsultation = owerlay.querySelector('#consultation'),
+          modalOrder = owerlay.querySelector('#order'),
+          modalThanks = owerlay.querySelector('#thanks'),
+          sectionCtalog = document.querySelector('.catalog'),
+          btnsMini = sectionCtalog.querySelectorAll('.button_mini'),
+          catalogCart = sectionCtalog.querySelectorAll('.catalog-item__subtitle');
+
+    function myModal (btns, modal) {
+        btns.forEach( (item, i) => {
+            item.addEventListener('click', () => {
+                owerlay.classList.add('owerlay_active');
+                modal.classList.remove('modal_hiden');
+                modal.classList.add('modal_active');
+
+                if(item.classList.contains('button_mini')) {
+                    subTitle = modal.querySelector('.modal__descr');
+                    subTitle.innerText = catalogCart[i].innerText;
+                }
+            });
+        });
+    
+        modalClose.forEach(item => {
+            item.addEventListener('click', () => {
+                if(modal.classList.contains('modal_active') && owerlay.classList.contains('owerlay_active')) {
+                    owerlay.classList.remove('owerlay_active');
+                    modal.classList.remove('modal_active');
+                    modal.classList.add('modal_hiden');
+                }
+            });
+        });
+    }
+
+    myModal(btns, modalConsultation);
+    myModal(btns, modalConsultation);
+    myModal(btnsMini, modalOrder);
+    
   });
