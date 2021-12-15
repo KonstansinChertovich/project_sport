@@ -37,6 +37,8 @@ $(document).ready(function(){
           btnsMini = sectionCtalog.querySelectorAll('.button_mini'),
           catalogCart = sectionCtalog.querySelectorAll('.catalog-item__subtitle');
 
+          console.log(modalClose);
+
     function myModal (btns, modal) {
         btns.forEach( (item, i) => {
             item.addEventListener('click', () => {
@@ -49,17 +51,16 @@ $(document).ready(function(){
                 }
             });
         });
-    
-        modalClose.forEach(item => {
-            item.addEventListener('click', () => {
-                if(modal.classList.contains('modal_active') && owerlay.classList.contains('owerlay_active')) {
-                    owerlay.classList.remove('owerlay_active');
-                    modal.classList.remove('modal_active');
-                    modal.classList.add('modal_hiden');
-                }
-            });
-        });
     }
+    modalClose.forEach(item => {
+        item.addEventListener('click', () => {
+            if(modal.classList.contains('modal_active') && owerlay.classList.contains('owerlay_active')) {
+                owerlay.classList.remove('owerlay_active');
+                modal.classList.remove('modal_active');
+                modal.classList.add('modal_hiden');
+            }
+        });
+    });
     myModal(btns, modalConsultation);
     myModal(btns, modalConsultation);
     myModal(btnsMini, modalOrder);
@@ -91,4 +92,29 @@ $(document).ready(function(){
     validateForm('#consultation-form');
     validateForm('#consultation form');
     validateForm('#order form');
+
+// mask
+    $('input[name=phone]').mask("+375(99) 999-99-99");
+
+// form submit
+    $('form').submit(function(e) {
+        e.preventDefault();
+
+        if(!$(this).valid()) {
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "mailer/smart.php",
+            data: $(this).serialize()
+        }).done(function() {
+            $(this).find("input").val("");
+            // $('#consultation, #order').fadeOut();
+            // $('.owerlay, #thanks').fadeIn('slow');
+
+            $('form').trigger('reset');
+        });
+        return false;
+    });
   });
