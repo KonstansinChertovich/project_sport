@@ -41,7 +41,7 @@
     &__content {
         margin-top: 57px;
         display: none;
-        justify-content: space-between;
+        justify-content: space-evenly;
         flex-wrap: wrap;
         &_active {
             display: flex;

@@ -7,10 +7,6 @@
     margin-bottom: 19px;
     overflow: hidden;
     transition: 0.5s all;
-    &:hover {
-        box-shadow: 3px 3px 20px $main-color;
-        border: none;
-    }
     &__img {
         display: block;
         margin: 0 auto;
@@ -83,7 +79,7 @@
     &__cart-default {
         width: 50%;
         margin-right: 0;
-        transform: translateX(-100%);
+        transform: translateX(-110%);
         transition: 0.3s all;
         &_active {
             transform: translateX(0%);

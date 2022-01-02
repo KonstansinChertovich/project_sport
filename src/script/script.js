@@ -3,7 +3,16 @@ $(document).ready(function(){
     $('.carousel__inner').slick({
         speed: 1100,
         prevArrow: '<button type="button" class="slick-prev"><img src="../icon/left.png" alt="arrow"></button>',
-        nextArrow: '<button type="button" class="slick-next"><img src="../icon/right.png" alt="arrow"></button>'
+        nextArrow: '<button type="button" class="slick-next"><img src="../icon/right.png" alt="arrow"></button>',
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    dots: true,
+                    arrows: false
+                  }
+            }
+        ]
     });
 
 // Tabs
@@ -37,7 +46,7 @@ $(document).ready(function(){
           btnsMini = sectionCtalog.querySelectorAll('.button_mini'),
           catalogCart = sectionCtalog.querySelectorAll('.catalog-item__subtitle');
 
-          console.log(modalClose);
+    
 
     function myModal (btns, modal) {
         btns.forEach( (item, i) => {
@@ -51,16 +60,17 @@ $(document).ready(function(){
                 }
             });
         });
-    }
-    modalClose.forEach(item => {
-        item.addEventListener('click', () => {
-            if(modal.classList.contains('modal_active') && owerlay.classList.contains('owerlay_active')) {
-                owerlay.classList.remove('owerlay_active');
-                modal.classList.remove('modal_active');
-                modal.classList.add('modal_hiden');
-            }
+        modalClose.forEach(item => {
+            item.addEventListener('click', () => {
+                if(modal.classList.contains('modal_active') && owerlay.classList.contains('owerlay_active')) {
+                    owerlay.classList.remove('owerlay_active');
+                    modal.classList.remove('modal_active');
+                    modal.classList.add('modal_hiden');
+                }
+            });
         });
-    });
+    }
+    
     myModal(btns, modalConsultation);
     myModal(btns, modalConsultation);
     myModal(btnsMini, modalOrder);
@@ -86,7 +96,7 @@ $(document).ready(function(){
                   required: "Введите ваш email!",
                   email: "Проверьте формат эл. почты"
                 }
-              }
+            }
         });
     }
     validateForm('#consultation-form');
@@ -117,4 +127,14 @@ $(document).ready(function(){
         });
         return false;
     });
+
+    window.addEventListener('scroll', (e) => {
+        e.preventDefault();
+        if(window.pageYOffset >= 1100) {
+            document.querySelector('.anchor').classList.add('anchor_active');
+        }else {
+            if(document.querySelector('.anchor').classList.contains('anchor_active'))
+            document.querySelector('.anchor').classList.remove('anchor_active');
+        }
+});
   });

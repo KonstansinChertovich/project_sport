@@ -1,0 +1,22 @@
+.anchor {
+    display: none;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 45px;
+    height: 45px;
+    border: 1px solid $main-color;
+    border-radius: 50%;
+    transition: 1s all;
+    img {
+        position: absolute;
+        display: block;
+        width: 70%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    &_active {
+        display: block;
+    }
+}
