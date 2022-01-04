@@ -127,7 +127,6 @@ $(document).ready(function(){
         });
         return false;
     });
-
     window.addEventListener('scroll', (e) => {
         e.preventDefault();
         if(window.pageYOffset >= 1100) {
@@ -136,5 +135,45 @@ $(document).ready(function(){
             if(document.querySelector('.anchor').classList.contains('anchor_active'))
             document.querySelector('.anchor').classList.remove('anchor_active');
         }
+    });
+
+    // scrollAnimations
+    const animItems = document.querySelectorAll('._anim-items');
+
+    if(animItems.length > 0) {
+        window.addEventListener('scroll', animOnScroll);
+
+        function animOnScroll() {
+            for (let index = 0; index < animItems.length; index++) {
+                const animItem = animItems[index];
+                const animItemHeight = animItem.offsetHeight;//высота элемента 
+                const animItemOffset = offset(animItem).top;//положение сверху омносительно документа
+                const animStart = 4;//коофициент старта 
+
+                    //момент старта      высота окна     высота элемента поделенная на  коофициент старта          
+                // let animItemPoint = window.innerHeight - animItemHeight / animStart;
+                let animItemPoint = window.innerHeight;
+
+
+                // если элемент выше нашего окна бр.
+                if(animItemHeight > window.innerHeight) {
+                    //момент старта     высота окна       высота окна поделенная на  коофициент старта  
+                    animItemPoint = window.innerHeight - window.innerHeight / animStart;
+                }
+
+                if (scrollY > (animItemOffset - animItemPoint) && scrollY < (animItemOffset + animItemHeight)) {
+                    animItem.classList.add('_active');
+                }else {
+                    animItem.classList.remove('_active');
+                }
+            }
+        }
+
+        function offset(el) {
+            const rect = el.getBoundingClientRect(),
+                scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+                scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                return {top: rect.top + scrollTop, left: rect.left + scrollLeft};
+        }
+    }
 });
-  });

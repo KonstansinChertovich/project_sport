@@ -1,7 +1,11 @@
+
 .comments {
     display: flex;
     justify-content: space-between;
     margin-top: 60px;
+    transform: translateY(130%);
+    opacity: 0;
+    transition: 1s all;
     &__content {
         margin-left: 60px;
     }
